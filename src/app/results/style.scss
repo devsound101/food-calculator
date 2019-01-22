@@ -1,0 +1,147 @@
+.results-content {
+  h2{
+    font-size: 23px;
+  }
+  .btn-download {
+    text-transform: uppercase;
+    display: block;
+    width: 90%;
+    margin: 0 auto 20px auto;
+  }
+  .total {
+    background-color: #F2F2F2;
+    padding: 0 15px 15px 15px;
+    .losing-type{
+      margin-top: 55px;
+      label{
+        font-size: 20px;
+      }
+    }
+    .money-box {
+      margin-top: 15px;
+      padding-left: 0;
+      .inner {
+        padding: 15px;
+        background-color: #797979;
+        color: #fff;
+        text-align: center;
+      }
+      span, em {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      span {
+        font-size: 20px;
+        line-height: 1;
+        font-family: $bold-font;
+      }
+      em {
+        font-size: 14px;
+        font-style: normal;
+      }
+      .money {
+        font-family: $bold-font;
+        font-size: 35px;
+        line-height: 1;
+        margin-top: 15px;
+      }
+    }
+  }
+  .table-wrap{
+    margin: 30px 0;
+    p{
+      margin-bottom: 10px;
+      margin-top: 0px;
+    }
+    table{
+      th{
+        width: 33.33%;
+        background-color: #F0F0F0;
+        font-size: 20px;
+        font-weight: normal;
+      }
+      th, td{
+        text-align: center;
+        padding: 10px 30px;
+        vertical-align: middle;
+      }
+      td{
+        font-family: $bold-font;
+        font-size: 35px;
+      }
+    }
+  }
+  .btn-show-details{
+    margin: 5px 0;
+    display: block;
+    width: auto;
+  }
+
+  .details{
+    h3{
+      line-height: 38px;
+      font-size: 20px;
+    }
+    p, h3{
+      color: #868686;
+    }
+    p{
+      margin: 20px 0;
+    }
+    .form-group{
+      margin-bottom: 10px;
+    }
+    .control-label{
+      display: block!important;
+      height: auto;
+      @extend .col-xs-9;
+      padding-right: 0;
+    }
+    .control-label, .value{
+      line-height: 20px;
+    }
+    .value{
+      @extend .col-xs-3;
+      text-align: right;
+    }
+    .btn-hide{
+      margin-top: -5px;
+    }
+  }
+
+
+  @media (max-width: $screen-sm) {
+    .total{
+      .money-box{
+        padding-left: 15px;
+      }
+      .losing-type{
+        padding-left: 0;
+        padding-right: 0;
+        margin-top: 15px;
+      }
+    }
+    .table-wrap {
+      margin: 30px 0;
+      table {
+        th{
+          font-size: 16px;
+        }
+        td{
+          font-size: 20px;
+        }
+        th, td{
+          padding: 5px 10px;
+          line-height: 1.2;
+        }
+      }
+    }
+    .details {
+      .form-group {
+        margin-bottom: 5px;
+      }
+    }
+  }
+}

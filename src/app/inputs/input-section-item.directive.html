@@ -1,0 +1,42 @@
+<uib-tabset active="activePill" type="pills" ng-if="vm.section.hasOnsEstimation">
+  <uib-tab index="0">
+    <uib-tab-heading><span class="icon icon-calculate"></span><span class="text">Calculate</span></uib-tab-heading>
+    <input-item ng-model="vm.model[field.id]"
+                label="field.name"
+                label-exp="field.exp"
+                max="field.max"
+                show-per-month="field.showPerMonth"
+                ng-repeat="field in vm.sectionFields[vm.section.id]"></input-item>
+  </uib-tab>
+
+  <uib-tab index="1">
+    <uib-tab-heading><span class="icon icon-estimate"></span><span class="text">Quick Estimate</span></uib-tab-heading>
+
+    <div class="ons-estimations-wrap">
+      <div class="total">
+        Estimate from Office of National Statistics (ONS): <strong>{{vm.sectionEstimationSum(vm.section.id)| currency:'£':2}}</strong> <em>(per month)</em>
+      </div>
+      <p>
+        By using ONS averages it allows to give you an illustration even where actual expenditure is not known.<br>
+        Here is a breakdown of these ONS averages:
+      </p>
+
+      <ul>
+        <li ng-repeat="field in vm.sectionFields[vm.section.id]">
+          <label>{{field.name}}</label>
+          <span>{{(vm.onsEstimation[field.id] || 0)| currency:'£':2}}</span>
+        </li>
+      </ul>
+    </div>
+
+  </uib-tab>
+</uib-tabset>
+
+<div ng-if="!vm.section.hasOnsEstimation">
+  <input-item ng-model="vm.model[field.id]"
+              label="field.name"
+              label-exp="field.exp"
+              max="field.max"
+              show-per-month="field.showPerMonth"
+              ng-repeat="field in vm.sectionFields[vm.section.id]"></input-item>
+</div>

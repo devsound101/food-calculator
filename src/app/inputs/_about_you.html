@@ -1,0 +1,43 @@
+<uib-accordion-heading>
+  About You <i class="arrow"></i>
+</uib-accordion-heading>
+
+<form class="form-horizontal">
+  <div class="form-group">
+    <label class="control-label col-md-3">Your monthly income after tax("take home pay")</label>
+    <div class="col-md-2">
+      <input type="text" class="form-control" ng-model="vm.model.monthlyIncome" currency-input min="0" currency-symbol="£" fraction="0">
+    </div>
+    <label class="control-label hidden-sm hidden-xs permonth">per month</label>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3"><span>Do you have a partner?</span></label>
+    <div class="col-md-2">
+      <div dropdown-select="vm.hasPartnerTypes" dropdown-model="vm.model.hasPartner"></div>
+    </div>
+    <div ng-show="vm.model.hasPartner.value==='yes'">
+      <label class="control-label col-md-3 col-md-offset-1">What is your partner's monthly income after tax</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" ng-model="vm.model.partnerMonthlyIncome" currency-input min="0" currency-symbol="£" fraction="0">
+      </div>
+      <label class="control-label hidden-sm hidden-xs permonth">per month</label>
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="control-label col-md-3">How many dependant children do you have?</label>
+    <div class="col-md-2">
+      <div dropdown-select="vm.childrenCounts" dropdown-model="vm.model.childrenCount"
+           dropdown-onchange="vm.onChildrenCountChanged(selected)"></div>
+    </div>
+    <div ng-show="vm.model.childrenCount.value > 0">
+      <label class="control-label col-md-3 col-md-offset-1">Monthly cost of childcare</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" ng-model="vm.model.monthlyChildcare" currency-input min="0" currency-symbol="£" fraction="0">
+        <em class="textbox-exp">Estimated figure from ONS</em>
+      </div>
+      <label class="control-label hidden-sm hidden-xs permonth">per month</label>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary has-arrow" ng-click="vm.makeSectionActive('housingPayments')">Next</button>
+</form>

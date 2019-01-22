@@ -1,0 +1,58 @@
+<div class="inputs-content ui-view-content">
+
+  <h1>Welcome to our family needs illustrator</h1>
+
+  <p>
+    You can use the calculator to illustrate the amount of insurance that might be needed if a family earner were to die.<br>
+    Alternatively, or to provide guidance, we have used household expenditure figures from the ONS* to show the average cost of each item at different household
+    income levels.<br>
+    The calculator does not constitute advice and should not be relied upon in making, or refraining from making, any decision.
+  </p>
+
+  <p>
+    *The calculator uses Office for National Statistics average expenditure figures at 1 October 2015.
+  </p>
+
+  <uib-accordion close-others="true">
+
+    <!--  About You -->
+    <div uib-accordion-group class="panel-default" is-open="vm.sectionActives.aboutYou">
+      <div ng-include="'app/inputs/_about_you.html'"></div>
+    </div>
+
+    <!--  Housing Payments -->
+    <div uib-accordion-group class="panel-default" is-open="vm.sectionActives.housingPayments">
+      <div ng-include="'app/inputs/_housing_payments.html'"></div>
+    </div>
+
+    <!--  Household Bills -->
+    <div uib-accordion-group class="panel-default" is-open="vm.sectionActives[section.id]"
+         ng-repeat="section in vm.outcomeSections">
+
+      <uib-accordion-heading>
+        {{section.name}}
+        <em class="sum" ng-if="section.id!=='savingDebts'">{{vm.getSectionSum(section.id)| currency:'£':0}} PM</em>
+        <i class="arrow" ng-if="section.id==='savingDebts'"></i>
+      </uib-accordion-heading>
+
+      <div input-section-item section="section" ons-estimation="vm.onsEstimation"></div>
+
+
+      <div ng-if="section.id === 'otherExpenses'">
+        <div class="clearfix"></div>
+        <div class="total-sum-line clearfix">You have {{(vm.getTotalIncome() - vm.getTotalOutcome())| currency:'£':0}} available after bills every month</div>
+      </div>
+
+
+      <button type="button" class="btn btn-primary has-arrow"
+              ng-click="vm.makeSectionActive(vm.outcomeSections[$index+1].id)"
+              ng-if="!$last">Next
+      </button>
+
+    </div>
+
+  </uib-accordion>
+
+  <br>
+  <button type="button" class="btn btn-primary has-arrow" ng-click="vm.results()">Results</button>
+</div>

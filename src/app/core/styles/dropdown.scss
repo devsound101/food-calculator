@@ -1,0 +1,129 @@
+.wrap-dd-select {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 5px 45px 3px 15px;
+  height:38px;
+
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  user-select:none;
+
+  background: $brand-primary;
+  border: none;
+  border-bottom: 3px solid darken($brand-primary, 10%);
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  border-radius: 0;
+  box-shadow: none;
+  font-weight: normal;
+
+  > span {
+    white-space:nowrap;
+  }
+
+  .disabled {
+    cursor: default;
+    background-color: $gray-light;
+    border-color: darken($gray-light, 10%);
+  }
+
+  &:after {
+    content: "";
+    width: 16px;
+    height: 9px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -3px;
+    background: url(../assets/img/sprite.png) no-repeat 0 -35px;
+    border: none;
+  }
+
+  &.disabled:after {
+    border: none;
+  }
+
+  & .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: white;
+    padding: 0;
+    border-radius: inherit;
+    border: 1px solid $gray-light;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    list-style: none;
+    visibility: hidden;
+    max-height: 300px;
+    overflow-y: auto; //Provide an auto overflow to display scroll
+
+    li{
+      .divider {
+        padding: 2px 0;
+        background: $gray-light;
+      }
+
+      .divider-label {
+        background: $gray-light;
+        cursor: default;
+        color: #000;
+        padding: 10px 0;
+      }
+
+      a {
+        display: block;
+        padding: 5px 15px;
+        text-decoration: none;
+        color: $text-color;
+        border-bottom: 1px solid $gray-light;
+        cursor: pointer;
+        box-shadow: none;
+      }
+
+      i {
+        float: right;
+        color: inherit;
+      }
+
+      &:last-of-type a {
+        border: none;
+      }
+
+      &:hover a {
+        background: $gray-lighter;
+      }
+    }
+
+    &:after {
+      content: "";
+      width: 0;
+      height: 0;
+      position: absolute;
+      bottom: 100%;
+      right: 15px;
+      border-width: 0 6px 6px 6px;
+      border-style: solid;
+      border-color: #fff transparent;
+    }
+
+    &:before {
+      content: "";
+      width: 0;
+      height: 0;
+      position: absolute;
+      bottom: 100%;
+      right: 13px;
+      border-width: 0 8px 8px 8px;
+      border-style: solid;
+      border-color: rgba(0,0,0,0.1) transparent;
+    }
+  }
+
+  &.active .dropdown {
+    visibility: visible;
+  }
+}

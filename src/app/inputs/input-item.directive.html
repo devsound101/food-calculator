@@ -1,0 +1,8 @@
+<div class="input-item-wrap">
+  <label class="control-label">{{vm.label}}<em ng-if="vm.labelExp">{{vm.labelExp}}</em></label>
+  <div class="input-wrap">
+    <input type="text" class="form-control" ng-model="vm.ngModel" currency-input min="0" max="vm.max" currency-symbol="£" fraction="0">
+    <em ng-if="vm.showPerMonth">per month</em>
+  </div>
+  <input ng-model="vm.ngModel" type="text" slider options="vm.sliderOptions"/>
+</div>

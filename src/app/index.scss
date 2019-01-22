@@ -1,0 +1,39 @@
+/**
+ *  Do not remove the comment below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+@font-face {
+  font-family: 'Franklin Gothic Book';
+  src: url('../fonts/FranklinGothic-Book.eot');
+  src: url('../fonts/FranklinGothic-Book.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/FranklinGothic-Book.woff') format('woff'),
+  url('../fonts/FranklinGothic-Book.ttf') format('truetype'),
+  url('../fonts/FranklinGothic-Book.svg#franklingothic_book') format('svg');
+}
+
+@font-face {
+  font-family: 'Franklin Gothic Medium';
+  src: url('../fonts/FranklinGothic-Medium.eot');
+  src: url('../fonts/FranklinGothic-Medium.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/FranklinGothic-Medium.woff') format('woff'),
+  url('../fonts/FranklinGothic-Medium.ttf') format('truetype'),
+  url('../fonts/FranklinGothic-Medium.svg#franklingothic_medium') format('svg');
+}
+
+
+@import 'core/styles/variables';
+@import 'core/styles/mixins';
+@import 'core/styles/form';
+@import 'core/styles/slider';
+@import 'core/styles/dropdown';
+@import 'core/styles/accordion';
+
+/**
+ *  Do not remove the comment below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector

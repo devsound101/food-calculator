@@ -1,0 +1,63 @@
+button,
+input[type="button"],
+input[type="submit"],
+.btn {
+  font-family: $bold-font;
+  font-size: 16px;
+  border-radius: 0;
+}
+
+.btn-default,
+.btn-primary,
+.btn-success,
+.btn-warning,
+.btn-danger {
+  border-bottom: 3px;
+}
+
+.btn-primary {
+  border-bottom-color: darken($btn-primary-bg, 10%);
+  border-bottom-style: solid;
+  position: relative;
+  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  &.has-arrow {
+    padding-right: 35px;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 12px;
+      width: 8px;
+      height: 14px;
+      right: 13px;
+      background: url(../assets/img/sprite.png) no-repeat -4px -17px;
+    }
+  }
+}
+
+.form-control {
+  border-radius: 0;
+  height: 38px;
+  padding: 6px 12px;
+  background-image: none;
+  border: 1px solid #d7d7dd;
+  color: #454c52;
+  font-size: 16px;
+  display: block;
+}
+
+.form-horizontal {
+  .control-label {
+    text-align: left;
+    @include flexbox;
+    @include align-items(center);
+    padding-top: 0;
+    height: 38px;
+    line-height: 1.2;
+    font-size: 16px;
+    &.permonth {
+      width: 1px;
+      white-space: nowrap;
+      font-weight: normal;
+    }
+  }
+}

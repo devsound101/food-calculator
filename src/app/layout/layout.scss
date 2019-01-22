@@ -1,0 +1,49 @@
+body {
+  font-family: $regular-font, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.66;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #015593;
+  &:first-child{
+    margin-top: 0;
+  }
+}
+.h1, h1 {
+  font-size: 41px;
+  margin-top: 48px;
+  margin-bottom: 24px;
+}
+
+p{
+  margin: 0 0 24px;
+}
+
+//page styles
+.ui-view-content {
+  max-width: 1190px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px 0 60px;
+}
+
+#toast-container.toast-top-center > .toast {
+  background-image: none !important;
+  padding: 15px 25px;
+  width: 100%;
+  border-radius: 0;
+  text-align: center;
+  box-shadow: none;
+  &.toast-error {
+    background-color: #E44E4E;
+  }
+  .btn-close {
+    img {
+      width: 15px;
+    }
+  }
+}

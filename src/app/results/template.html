@@ -1,0 +1,190 @@
+<div class="results-content ui-view-content">
+
+  <p>
+    <a ui-sref="inputs">&lt; Back to calculator</a>
+  </p>
+
+  <h2>Results</h2>
+
+  <div class="row">
+    <div class="col-sm-8 col-md-9">
+      <p>
+        BODY TEXT SUMMARISING BREAKDOWN Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes,
+        nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+        mus. Donec ullamcorper nulla non.
+      </p>
+    </div>
+    <div class="col-sm-4 col-md-3">
+      <button type="button" class="btn btn-primary btn-download" ng-click="vm.downloadPDF()">Download a PDF Summary</button>
+    </div>
+  </div>
+
+  <div class="total form-horizontal">
+    <div class="row">
+      <div class="col-sm-4 losing-type">
+        <label class="col-sm-6 control-label">Impact of losing</label>
+        <div class="col-sm-6">
+          <div dropdown-select="vm.losingTypes" dropdown-model="vm.model.losingType"
+               dropdown-onchange="vm.onLosingTypeChanged(selected)"></div>
+        </div>
+      </div>
+      <div class="col-sm-4 money-box">
+        <div class="inner">
+          <span>Immediate costs for family</span>
+          <em>(based on paying debts & funeral costs)</em>
+          <div class="money">{{vm.model.costsForFamily | currency:'£':0}}</div>
+        </div>
+      </div>
+      <div class="col-sm-4 money-box">
+        <div class="inner">
+          <span>Shortfall on monthly bills</span>
+          <em>&nbsp;</em>
+          <div class="money">{{vm.model.shortFallMonthlyBills | currency:'£':0}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <h2>How long can you keep paying your household bills?</h2>
+    <table class="table table-bordered">
+      <tr>
+        <th>You could continue to pay bills</th>
+        <th>You could buy clothes and keep broadband</th>
+        <th>You could maintain your same quality of life</th>
+      </tr>
+      <tr>
+        <td>{{vm.model.householdBillsPeriod[0]}}</td>
+        <td>{{vm.model.householdBillsPeriod[1]}}</td>
+        <td>{{vm.model.householdBillsPeriod[2]}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="table-wrap">
+    <h2>Life assurance you need:</h2>
+    <p>To clear debts, preserve savings and maintain the same quality of life for an extended period you would need life assurance of:</p>
+    <table class="table table-bordered">
+      <tr>
+        <th>To cover 1 year</th>
+        <th>To cover 5 years</th>
+        <th>To cover 10 years</th>
+      </tr>
+      <tr>
+        <td>{{vm.model.lifeAssurance[0] | currency:'£':0}}</td>
+        <td>{{vm.model.lifeAssurance[1] | currency:'£':0}}</td>
+        <td>{{vm.model.lifeAssurance[2] | currency:'£':0}}</td>
+      </tr>
+    </table>
+  </div>
+
+  <p ng-show="!vm.isShowDetails">
+    Want to see more details?
+    <button type="button" class="btn btn-primary btn-show-details" ng-click="vm.isShowDetails=true">Yes, show me</button>
+  </p>
+
+  <div class="details" ng-show="vm.isShowDetails">
+    <h3>
+      Details
+      <button type="button" class="btn btn-primary pull-right btn-hide" ng-click="vm.isShowDetails=false">Hide</button>
+    </h3>
+
+    <form class="form-horizontal">
+      <div class="row">
+        <div class="col-md-5 col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Clearing debts</label>
+            <div class="value">{{vm.model.debts | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Average funeral costs</label>
+            <div class="value">{{vm.model.funeralCost | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Cost of cancellation (3 mths of bills)</label>
+            <div class="value">{{vm.model.cancellationCost | currency:'£':2}}</div>
+          </div>
+        </div>
+
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+          <div class="form-group">
+            <label class="control-label">Ongoing monthly income after tax</label>
+            <div class="value">{{vm.model.monthlyIncome | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Ongoing housing costs (rent, mortgage)</label>
+            <div class="value">{{vm.model.housingCost | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Childcare</label>
+            <div class="value">{{vm.model.childcare | currency:'£':2}}</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="clearfix">
+        Default expenditure is reduced to reflect a smaller family size.
+        This gives you a represtive idea of what these costs would be with the impact of losing you or your partner:
+      </p>
+
+      <div class="row">
+        <div class="col-md-5 col-sm-6">
+          <div class="form-group">
+            <h3 class="control-label">Your monthly bills and living costs</h3>
+            <div class="value">{{vm.model.sumLivingCost | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Food & Housekeeping</label>
+            <div class="value">{{vm.model.food | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Gas/Electricity</label>
+            <div class="value">{{vm.model.gasElectricity | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Water</label>
+            <div class="value">{{vm.model.water | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Phone</label>
+            <div class="value">{{vm.model.phone | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Council Tax</label>
+            <div class="value">{{vm.model.councilTax | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Home Insurance</label>
+            <div class="value">{{vm.model.homeInsurance | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Essential Travel</label>
+            <div class="value">{{vm.model.travel | currency:'£':2}}</div>
+          </div>
+        </div><!-- ./row -->
+
+        <div class="col-md-5 col-md-offset-2 col-sm-6">
+          <div class="form-group">
+            <h3 class="control-label">Clothes, TV and internet</h3>
+            <div class="value">{{vm.model.sumClothesTV | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">Clothes</label>
+            <div class="value">{{vm.model.clothes | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <label class="control-label">TV/Broadband</label>
+            <div class="value">{{vm.model.tvBroadband | currency:'£':2}}</div>
+          </div>
+          <div class="form-group">
+            <h3 class="control-label">Other spending</h3>
+            <div class="value">{{vm.model.otherSpending | currency:'£':2}}</div>
+          </div>
+        </div>
+      </div><!-- ./row -->
+
+    </form>
+
+  </div>
+
+</div>

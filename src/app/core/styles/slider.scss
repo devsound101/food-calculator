@@ -1,0 +1,233 @@
+//
+// Variables
+// --------------------------------------------------
+
+
+//== Colors
+//
+
+$black:                  #000;
+$white:                  #fff;
+//$gray:                   #999;// Use existing bootstrap variable of same name
+$gray2:                  $gray-light;
+$blue:                   $brand-secondary;
+
+//== Typography
+//
+
+// Get these from Bootstrap variables of same names
+//$font-family-sans-serif:  "Helvetica Neue", Helvetica, Arial, sans-serif;
+//$font-family-base:        $font-family-sans-serif;
+
+$font-size-pointers-label:  9px;
+$line-height-pointers-label:  12px;
+$font-size-pointers-value:  $font-size-pointers-label;
+$line-height-pointers-value:  $line-height-pointers-label;
+
+$color-pointers-label:  $black;
+$color-pointers-value:  $color-pointers-label;
+$color-scale:           $gray;
+
+$color-pointers-default-value:                    $blue;
+
+//== Skin CSS
+//
+
+$color-skin-pointers-default-value:               $gray2;
+
+$color-skin-background:                           $gray-dark;
+$color-skin-css-pointers-default-value:           transparent;
+$color-skin-css-pointers-before-value:            #f39879;
+$color-skin-css-pointers-after-value:             #f39879;
+
+$draghandle-border-color: #9f1111;
+$draghandle-background-color: $brand-primary;
+$draghandle-hover-border-color: darken($draghandle-border-color, 5%);
+$draghandle-hover-background-color: darken($brand-primary, 5%);
+
+
+//
+// Main slider custom overrided js css rules
+// --------------------------------------------------
+&.jslider_cl {
+  margin:13px 0 11px;
+
+  div.jslider-bg {
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+
+    i {
+      height: 12px;
+
+      &.left {
+        left: 0;
+        width: 50%;
+        background-color: $color-skin-background;
+        background-image: none;
+      }
+      &.right {
+        width: 50%;
+        left: 50%;
+        background-color: $color-skin-background;
+        background-image: none;
+      }
+      &.before {
+        left: 0;
+        width: 1px;
+        background-color: $color-skin-css-pointers-before-value;
+        background-image: none;
+      }
+      &.default {
+        left: 0;
+        width: 1px;
+        z-index: 1;
+        background-color: $color-skin-css-pointers-default-value;
+        background-image: none;
+      }
+      &.after {
+        left: 0;
+        background-color: $color-skin-css-pointers-after-value;
+        background-image: none;
+      }
+      &.range {
+        position: absolute;
+        top: 0;
+        left: 20%;
+        width: 60%;
+        height: 5px;
+        z-index: 1;
+        background-image: none;
+        background-color: #777575
+      }
+    }
+  }
+
+  div.jslider-pointer {
+    position:relative;
+    top: -20px;
+    left: 15px;
+    width: 30px;
+    height: 30px;
+    margin-left: -15px;
+    background-color: $draghandle-background-color;
+    border-radius: 50%;
+    border: none;
+    //border-bottom: solid $draghandle-border-color 1px;
+    background-image:none !important;
+    box-shadow: none;
+
+    &:before{
+      content:'';
+      position:absolute;
+      display:block;
+      left:11px;
+      top:9px;
+      height:12px;
+      width:2px;
+      background:rgba(255,255,255,.8);
+      border-right:1px solid #fff;
+    }
+    &:after{
+      content:'';
+      position:absolute;
+      display:block;
+      left:16px;
+      top:9px;
+      height:12px;
+      width:2px;
+      background:#fff;
+      background:rgba(255,255,255,.8);
+      border-left:1px solid #fff;
+    }
+
+    &:active,
+    &:focus,
+    &:hover{
+      border-color: $draghandle-hover-border-color;
+      background-color: $draghandle-hover-background-color;
+      outline:none;
+    }
+  }
+
+  div.jslider-bg i {
+    background: none;
+  }
+
+  div.jslider-value{
+    display:none;
+  }
+
+  // vertical
+  &.vertical {
+
+    td {
+      height: 100%;
+    }
+
+    div.jslider-bg {
+
+      i {
+        left: 50%;
+        width: 12px;
+
+        &.left {
+          top: 0;
+          height: 50%;
+          background-color: $color-skin-background;
+          background-image: none;
+        }
+
+        &.right {
+          height: 50%;
+          top: 50%;
+          background-color: $color-skin-background;
+          background-image: none;
+        }
+
+        &.range {
+          height: 100%;
+          z-index: 1;
+          background-color: #777575;
+          background-image: none;
+        }
+
+        &.before {
+          background-color: $color-skin-css-pointers-before-value;
+          background-image: none;
+        }
+
+        &.default {
+          height: 1px;
+          background-color: $color-skin-css-pointers-default-value;
+          background-image: none;
+          z-index: 2;
+        }
+
+        &.after {
+          background-color: $color-skin-css-pointers-after-value;
+          background-image: none;
+        }
+
+      }
+
+    }
+
+    div.jslider-bg i,div.jslider-pointer {
+      background: none;
+    }
+
+    div.jslider-pointer {
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background-color: #615959;
+      border-radius: 50%;
+      margin-left: -3px;
+
+      &.jslider-pointer-to {
+        left: 50%;
+      }
+    }
+  }
+}  
